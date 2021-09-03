@@ -1,0 +1,72 @@
+//CODIGO IMCOMPLETO
+openapi: 3.0.1
+info:
+  title: API test Agilesoft Back-end Nodejs
+  version: 1.0.0
+servers:
+- url: http://localhost:4000/api/
+tags:
+- name: Tareas
+- name: Auth
+
+paths:
+  /auth/signup:
+    post:
+      tags:
+      - Auth
+      summary: Permite registrarse como usuario.
+      responses:
+        200:
+          description: (OK)
+          
+  /auth/signin:
+    post:
+      tags:
+      - Auth
+      summary: Permite logearse como usuario.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:
+        200:
+          description: (OK)
+        
+  /task:
+    get:
+      tags:
+      - Tareas
+      summary: Permite obtener todas las tareas.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:
+        200:
+          description: (OK)
+          
+  /task/id:
+    get:
+      tags:
+      - Tareas
+      summary: Permite obtener una tarea.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:
+        200:
+          description: (OK)
+          
+  /task:
+    post:
+      tags:
+      - Tareas
+      summary: Permite crear una tarea de un usuario.
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:
+        200:
+          description: (OK)
+        
+components:
+  parameters:
+    token:
+      name: Token
+      in: header
+      description: Token de autenticación.
+      required: true
